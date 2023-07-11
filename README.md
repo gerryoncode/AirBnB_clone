@@ -18,4 +18,4 @@ The first piece is to manipulate a powerful storage system. This storage engine 
 This abstraction will also allow you to change the type of storage easily without updating all of your codebase.
 
 The console will be a tool to validate this storage engine.
-![The console](/assets/console.png)
+![The console](https://res.cloudinary.com/christo/image/upload/v1689093140/console_tk6bbz.png)
