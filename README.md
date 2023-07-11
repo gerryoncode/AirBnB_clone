@@ -10,7 +10,7 @@ The AirBnB clone is simple copy of the AirBnB website with minimal features.
 - Tested on Ubuntu 20.04.1 LTS
 - All python scripts wre written in python3.8
 ## Steps
-#### The console
+1. #### The console
 - Create your data model
 - Manage (create, update, destroy, etc) objects via a console / command interpreter.
 The first piece is to manipulate a powerful storage system. This storage engine will give us an abstraction between “My object” and “How they are stored and persisted”. This means: from your console code (the command interpreter itself) and from the front-end and RestAPI you will build later, you won’t have to pay attention (take care) of how your objects are stored.
