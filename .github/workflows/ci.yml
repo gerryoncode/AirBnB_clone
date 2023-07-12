@@ -22,7 +22,7 @@ jobs:
           pip install pycodestyle pytest
       - name: Lint with pycodestyle
         run: |
-          pycodestyle *.py
+          pycodestyle --recursive .
       - name: Test with pytest and run unit tests
         run: |
           python3 -m unittest discover tests
