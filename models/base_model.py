@@ -15,7 +15,7 @@ class BaseModel:
         updated_at (date): displays the time when the instance was created
         and everytime it is changed
     """
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """ Initializes the BaseModel
         Args:
         """
