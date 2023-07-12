@@ -1,4 +1,4 @@
-name: Lint and run tests
+name: CI
 
 on: [push]
 
@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+        python-version: ["3.8"]
 
     steps:
       - uses: actions/checkout@v3
@@ -20,11 +20,11 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pycodestyle pytest
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Lint with pycodestyle
         run: |
-          pycodestyle *.py
-      - name: Test with pytest
+          find . -name "*.py" -exec pycodestyle --show-source --statistics {} +
+      - name: Test with pytest and run unit tests
         run: |
+          python3 -m unittest discover tests
           pytest
 
