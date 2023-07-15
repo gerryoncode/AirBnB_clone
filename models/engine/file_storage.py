@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 """FileStorage class."""
 import json
-from models import base_model
+from models import base_model, user
 from os.path import exists
 
 BaseModel = base_model.BaseModel
-name_class = ["BaseModel"]
+User = user.User
+name_class = ["BaseModel","User"]
 
 
 class FileStorage:
