@@ -6,7 +6,7 @@ from os.path import exists
 
 BaseModel = base_model.BaseModel
 User = user.User
-name_class = ["BaseModel","User"]
+name_class = ["BaseModel", "User"]
 
 
 class FileStorage:
