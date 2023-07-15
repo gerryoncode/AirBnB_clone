@@ -5,6 +5,7 @@ from models import base_model
 from os.path import exists
 
 BaseModel = base_model.BaseModel
+name_class = ["BaseModel"]
 
 
 class FileStorage:
@@ -43,7 +44,7 @@ class FileStorage:
         """
         if(exists(FileStorage.__file_path)):
             with open(FileStorage.__file_path, "r") as f:
-                dic_obj = load(f)
+                dic_obj = json.load(f)
                 for key, value in dic_obj.items():
                     class_name = key.split(".")[0]
                     if class_name in name_class:
