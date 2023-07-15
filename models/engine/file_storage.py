@@ -42,7 +42,7 @@ class FileStorage:
         """
         Deserialize json to python objects if filepath exist
         """
-        if(exists(FileStorage.__file_path)):
+        if (exists(FileStorage.__file_path)):
             with open(FileStorage.__file_path, "r") as f:
                 dic_obj = json.load(f)
                 for key, value in dic_obj.items():
@@ -51,4 +51,3 @@ class FileStorage:
                         FileStorage.__objects[key] = eval(class_name)(**value)
                     else:
                         pass
-
