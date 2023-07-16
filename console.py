@@ -100,7 +100,7 @@ class HBNBCommand(cmd.Cmd):
         return super().do_help(arg)
 
     def do_EOF(self, line):
-        """Inbuilt EOF command to gracefully catch errors.
+        """Handle EOF command to exit the program.
         """
         print("")
         return True
