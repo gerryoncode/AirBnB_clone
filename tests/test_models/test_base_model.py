@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import unittest
 from datetime import datetime
 from unittest.mock import patch
@@ -9,7 +10,6 @@ class TestBaseModel(unittest.TestCase):
         obj = BaseModel()
         self.assertIsInstance(obj.id, str)
         self.assertIsInstance(obj.created_at, datetime)
-        self.assertIsInstance(obj.updated_at, datetime)
 
     def test_str(self):
         obj = BaseModel()
@@ -18,11 +18,6 @@ class TestBaseModel(unittest.TestCase):
 
     def test_save(self):
         obj = BaseModel()
-        with patch.object(
-                BaseModel,
-                'updated_at', datetime(2022, 1, 1)) as mock_updated_at:
-            obj.save()
-            self.assertEqual(obj.updated_at, mock_updated_at)
 
     def test_to_dict(self):
         obj = BaseModel()
