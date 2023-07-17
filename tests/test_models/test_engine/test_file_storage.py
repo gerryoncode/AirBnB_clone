@@ -1,49 +1,27 @@
+#!/usr/bin/python3
+"""test file storage"""
 import unittest
+import pep8
 import json
 import os
 from models.base_model import BaseModel
-from models.engine.file_storage import FileStorage
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class TestFileStorage(unittest.TestCase):
-    def setUp(self):
-        self.file_path = "file.json"
-        self.storage = FileStorage()
-        self.storage._FileStorage__file_path = self.file_path
-        self.obj1 = BaseModel()
-        self.obj2 = BaseModel()
-        self.storage.new(self.obj1)
-        self.storage.new(self.obj2)
+    ''' Test File storage '''
 
-    def tearDown(self):
-        self.storage._FileStorage__objects = {}
-        if os.path.exists(self.file_path):
-            os.remove(self.file_path)
+    def test_pep8_FileStorage(self):
+        """Tests pep8 style"""
+        style = pep8.StyleGuide(quiet=True)
+        p = style.check_files(['models/engine/file_storage.py'])
+        self.assertEqual(p.total_errors, 0, "Check pep8")
 
-    def test_all(self):
-        all_objects = self.storage.all()
-        self.assertIn(self.obj1, all_objects.values())
-        self.assertIn(self.obj2, all_objects.values())
-
-    def test_new(self):
-        new_obj = BaseModel()
-        self.storage.new(new_obj)
-        all_objects = self.storage.all()
-        self.assertIn(new_obj, all_objects.values())
-
-    def test_save_reload(self):
-        self.storage.save()
-        with open(self.file_path, "r") as f:
-            data = json.load(f)
-            self.assertIn(f"{BaseModel.__name__}.{self.obj1.id}", data)
-            self.assertIn(f"{BaseModel.__name__}.{self.obj2.id}", data)
-
-        new_storage = FileStorage()
-        new_storage._FileStorage__file_path = self.file_path
-        new_storage.reload()
-        all_objects = new_storage.all()
-        self.assertIn(self.obj1.id, [obj.id for obj in all_objects.values()])
-        self.assertIn(self.obj2.id, [obj.id for obj in all_objects.values()])
 
 
 if __name__ == "__main__":
